@@ -1,16 +1,20 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import Weather from "./Weather";
 
 export default function App() {
   return (
     <div className="App">
       <div className="container">
-      <h1>Weather React App</h1>
+     
+      <Weather />
       <footer>
-        This project was coded by <a href="#" target="_blank">Alina Nguyen</a> and is{" "}
-<a href="https://github.com/onesanity/react-weather-app" target="_blank">open sourced on Git Hub</a>.
-    <button>Breathe</button>
+        This project was coded by {" "}
+        <a href="https://FrissonInducingTherapy.com" target="_blank">Alina Nguyen</a> and is{" "}
+<a href="https://github.com/onesanity/react-weather-app" target="_blank">
+  open sourced on Git Hub</a>.
+    
     </footer>
     </div>
     </div>
