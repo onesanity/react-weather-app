@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Weather from "./Weather";
