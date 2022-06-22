@@ -9,7 +9,7 @@ export default function App() {
     <div className="App">
       <div className="container">
      
-      <Weather />
+      <Weather defaultCity="Bentonville" />
       <footer>
         This project was coded by {" "}
         <a href="https://FrissonInducingTherapy.com" target="_blank">Alina Nguyen</a> and is{" "}
