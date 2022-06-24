@@ -28,7 +28,6 @@ export default function WeatherIcon(props){
   };
 
 
-
   return (
 
   <ReactAnimatedWeather
