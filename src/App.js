@@ -3,6 +3,7 @@ import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Weather from "./Weather";
+import WeatherSearch from "./WeatherSearch";
 
 export default function App() {
   return (
