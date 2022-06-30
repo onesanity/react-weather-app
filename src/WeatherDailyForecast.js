@@ -1,37 +1,39 @@
-import React from "react";
-import Weather from "./Weather";
-import WeatherIcon from "./WeatherIcon";
+import React, { useState } from "react";
 import "./WeatherForecast.css";
-import FormattedDate from "./FormattedDate";
-import WeatherTempConversion from "./WeatherTempConversion";
-import WeatherSearch from "./WeatherSearch";
 import axios from "axios";
+import WeatherForecastDay from "./WeatherForecastDay";
 
-export default function WeatherDailyForecast(props){
+export default function WeatherDailyForecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(null);
+
   function handleResponse(response){
-    console.log(response.data);
+    setForecast(response.data.daily);
+    setLoaded(true);
   }
-  let apiKey ="e87dcc8ca05ed4bca8a5c243ea815556";
-  let longitude = props.coordinates.lon;
-  let latitude = props.coordinates.lat;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metrics`;
   
-  axios.get(apiUrl).then(handleResponse);
-
-  return ( 
-  <div className="WeatherDailyForecast">
-    <div className="row">
-      <div className="col">
-        <div className="WeatherForecast-day">Thurs</div>
-        <WeatherIcon code="01d" size={28} />
-        <div className="WeatherForecast-temperature">
-          <span className="WeatherForecast-temperature-max">19
-          </span>
-          <span className="WeatherForecast-temperature-min">10
-          </span>
+  if (loaded) {
+    console.log(forecast);
+    return (
+      <div className="WeatherDailyForecast">
+        <div className="row">
+          <div className="col">
+          <WeatherForecastDay data={forecast[0]} />
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  );
+    );
+
+  } else {
+    let apiKey ="e87dcc8ca05ed4bca8a5c243ea815556";
+    let longitude = props.coordinates.lon;
+    let latitude = props.coordinates.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  
+    axios.get(apiUrl).then(handleResponse);
+
+
+  return null; 
+
+}
 }
